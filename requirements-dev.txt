@@ -1,0 +1,7 @@
+# Full local toolchain: sampler, calibration tool, Streamlit dashboard, tests.
+# requirements.txt alone (numpy/matplotlib/flask) is all the deployed
+# Vercel function needs - kept separate so that bundle stays small.
+-r requirements.txt
+opencv-python-headless>=4.9
+streamlit>=1.32
+pytest>=8.0

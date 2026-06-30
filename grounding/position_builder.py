@@ -3,8 +3,6 @@ half of the pipeline and the pure-math analytics half).
 """
 import json
 
-from calibrate.calibration_tool import apply_homography
-
 
 def build_positions(video, fps_sampled, court_dims_m, frames, calibration, backend, prompts):
     """frames: list of {"frame", "t", "image"} from the frame sampler.
@@ -12,6 +10,11 @@ def build_positions(video, fps_sampled, court_dims_m, frames, calibration, backe
 
     Returns a dict matching the positions.json contract.
     """
+    # Imported here, not at module level, so callers that only need
+    # save_positions/load_positions (e.g. the Vercel dashboard view) don't
+    # have to install OpenCV just to import this module.
+    from calibrate.calibration_tool import apply_homography
+
     homography = calibration["homography"]
     players = {side: [] for side in prompts}
 
