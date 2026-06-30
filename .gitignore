@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.mp4
+*.mov
+frames/
+positions.json
+calibration.json
+.pytest_cache/
